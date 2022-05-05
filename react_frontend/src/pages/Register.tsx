@@ -41,7 +41,7 @@ const Register = () => {
               />
               <StrongPassword
                 label='Password'
-                placeholder='Your password'
+                placeholder='Your passwor'
                 icon={<IoLockClosed size={16} />}
               />
               <PasswordInput
