@@ -1,13 +1,19 @@
 import React, { useState } from 'react'
 import { IoCheckmarkSharp } from 'react-icons/io5'
-import { PasswordInput, Progress, Text, Popover, Box } from '@mantine/core'
+import {
+  PasswordInput,
+  Progress,
+  Text,
+  Popover,
+  Box,
+  PasswordInputProps,
+} from '@mantine/core'
 import { MdClear } from 'react-icons/md'
+import { GetInputPropsPayload } from '@mantine/form/lib/types'
+import { UseFormReturnType } from '@mantine/form/lib/use-form'
 
-interface IStrongPassword {
-  icon: React.ReactNode
-  error?: boolean | string
-  label?: string
-  placeholder?: string
+interface IStrongPassword extends PasswordInputProps {
+  registerForm: UseFormReturnType<any>
 }
 
 function PasswordRequirement({
@@ -36,7 +42,7 @@ const requirements = [
 ]
 
 function getStrength(password: string) {
-  let multiplier = password.length > 8 ? 0 : 1
+  let multiplier = password.length >= 8 ? 0 : 1
 
   requirements.forEach((requirement) => {
     if (!requirement.re.test(password)) {
@@ -49,12 +55,12 @@ function getStrength(password: string) {
 
 export default function StrongPassword({
   icon,
-  error,
   label,
   placeholder,
+  registerForm,
 }: IStrongPassword) {
   const [popoverOpened, setPopoverOpened] = useState(false)
-  const [value, setValue] = useState('')
+  const { password: value } = registerForm.values
   const checks = requirements.map((requirement, index) => (
     <PasswordRequirement
       key={index}
@@ -81,10 +87,8 @@ export default function StrongPassword({
         <PasswordInput
           label={label}
           placeholder={placeholder}
-          value={value}
           icon={icon}
-          error={error}
-          onChange={(event) => setValue(event.currentTarget.value)}
+          {...registerForm.getInputProps('password')}
         />
       }
     >
@@ -96,7 +100,7 @@ export default function StrongPassword({
       />
       <PasswordRequirement
         label='Includes at least 8 characters'
-        meets={value.length > 8}
+        meets={value.length >= 8}
       />
       {checks}
     </Popover>
