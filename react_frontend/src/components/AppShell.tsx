@@ -1,16 +1,13 @@
-import { AppShell, Navbar, Header } from '@mantine/core'
-import { FC, PropsWithChildren } from 'react'
+import { AppShell, Header } from '@mantine/core'
+import { FC, PropsWithChildren, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from '../pages/Home'
+import NavBar from './NavBar'
 const AppShellComponent: React.FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
     <AppShell
       padding='md'
-      navbar={
-        <Navbar width={{ base: 300 }} height={500} p='xs'>
-          {/* Navbar content */}
-        </Navbar>
-      }
+      navbar={<NavBar />}
       header={
         <Header height={60} p='xs'>
           {/* Header content */}

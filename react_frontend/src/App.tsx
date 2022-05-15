@@ -20,6 +20,7 @@ import Session from 'supertokens-auth-react/recipe/session'
 import Me from './components/http/me'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import AuthRoutes from './utils/AuthRoutes'
+import PublicRoutes from './utils/PublicRoutes'
 
 SuperTokens.init({
   appInfo: {
@@ -70,11 +71,12 @@ function App() {
             setIsErrorModalOpened={setIsErrorModalOpened}
           />
           <Routes>
-            <Route path='/' element={<AuthRoutes />}>
-              <Route path='app/*' element={<AppShellComponent />} />
-            </Route>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='' element={<AuthRoutes />}>
+              <Route path='app/*' element={<AppShellComponent />} />
+              <Route path='/' element={<Navigate to='/app' replace />} />
+            </Route>
             <Route path='/' element={<Navigate to='/app' replace />} />
           </Routes>
         </Me>
