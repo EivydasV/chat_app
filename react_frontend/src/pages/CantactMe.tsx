@@ -1,19 +1,23 @@
 import {
   Box,
   Button,
+  Divider,
   Group,
   Input,
   InputWrapper,
   Stack,
   Text,
   Textarea,
+  Title,
 } from "@mantine/core";
 
 const CantactMe = () => {
   return (
-    <Group grow>
+    <Group grow mt='xl'>
       <Group position="center">
         <Box sx={{ width: "500px" }}>
+          <Title >Cantact me </Title>
+          <Divider my='sm'/>
           <form>
             <Stack spacing="lg" justify="center">
               <Stack>
@@ -45,13 +49,12 @@ const CantactMe = () => {
                 />
               </Stack>
               <Stack>
-                <Button>Submit</Button>
+                <Button variant="gradient" gradient={{ from: 'indigo', to: 'cyan' }}>Submit</Button>
               </Stack>
             </Stack>
           </form>
         </Box>
       </Group>
-      <Group position="center">aside 2</Group>
     </Group>
   );
 };
