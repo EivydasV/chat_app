@@ -6,7 +6,7 @@ const Header = () => {
     <Box
       py={"md"}
       px="lg"
-      mb="lg"
+      // mb="lg"
       sx={(theme) => ({
         backgroundColor: theme.colors.gray[8],
         color: theme.colors.gray[0],
@@ -32,7 +32,7 @@ const Header = () => {
         </Group>
         <Group position="right">
           <Link to="contactme">
-            <Button variant="gradient">Contact me </Button>
+            <Button variant="gradient">Contact me</Button>
           </Link>
         </Group>
       </Group>
