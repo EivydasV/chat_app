@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Home from "./pages/Home";
 import ContactMe from "./pages/CantactMe";
 import { Box } from "@mantine/core";
+<<<<<<< HEAD
 =======
 import { useState } from 'react'
 import { Button } from '@mantine/core'
@@ -44,6 +45,8 @@ Session.addAxiosInterceptors(axios)
 
 const queryClient = new QueryClient()
 >>>>>>> parent of 6333fa6 (commit)
+=======
+>>>>>>> b4af9e63dba5f4ff2bed74eb6aacdb7d8f45a8f2
 function App() {
   return (
     <>
